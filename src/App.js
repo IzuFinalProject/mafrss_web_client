@@ -8,7 +8,7 @@ import Home from "./components/home";
 import Login from "./components/login";
 import BoardAdmin from "./components/admin/adminBoard";
 import BoardUser from "./components/userBoard";
-import Profile from "./components/profile";
+import Profile from "./components/account/profile";
 import Activate from "./components/activate";
 import ResetPassword from "./components/resetPassword";
 import RestPasswordConfirm from "./components/resetPasswordConfirm";
@@ -64,8 +64,11 @@ class App extends Component {
         { path: "/profile", element: <Profile /> },
         { path: "/user", element: <BoardUser /> },
         { path: "/admin", element: <BoardAdmin /> },
-        { path: "/reset-password", element: <ResetPassword/> },
-        { path: "/password/reset/confirm/:uid/:token", element: <RestPasswordConfirm /> },
+        { path: "/reset-password", element: <ResetPassword /> },
+        {
+          path: "/password/reset/confirm/:uid/:token",
+          element: <RestPasswordConfirm />,
+        },
         { path: "/activate/:uid/:token", element: <Activate /> },
       ]);
     return (

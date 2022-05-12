@@ -16,7 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const BASE_URI = "http://127.0.0.1:8000/";
+const BASE_URI = "http://35.246.90.79:8000/";
 
 export default function UserList() {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
@@ -112,8 +112,12 @@ export default function UserList() {
               >
                 <TableCell padding="checkbox">
                   <Checkbox
-                    checked={selectedCustomerIds.indexOf(customer.username) !== -1}
-                    onChange={(event) => handleSelectOne(event, customer.username)}
+                    checked={
+                      selectedCustomerIds.indexOf(customer.username) !== -1
+                    }
+                    onChange={(event) =>
+                      handleSelectOne(event, customer.username)
+                    }
                     value="true"
                   />
                 </TableCell>
@@ -124,11 +128,18 @@ export default function UserList() {
                       display: "flex",
                     }}
                   >
-                    <Avatar src={customer.image?customer.image:BASE_URI+"files/default.png"} sx={{ mr: 2 }}>
+                    <Avatar
+                      src={
+                        customer.image
+                          ? customer.image
+                          : BASE_URI + "files/default.png"
+                      }
+                      sx={{ mr: 2 }}
+                    >
                       Avatar
                     </Avatar>
                     <Typography color="textPrimary" variant="body1">
-                      {customer.first_name +" "+customer.last_name}
+                      {customer.first_name + " " + customer.last_name}
                     </Typography>
                   </Box>
                 </TableCell>

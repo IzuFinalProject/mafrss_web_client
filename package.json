@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf ../backend/school_app/build && react-scripts build && cp -r build ../backend/school_app/build",
+    "build": "rm -rf ../backend/app/school_app/build && react-scripts build && cp -r build ../backend/app/school_app/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

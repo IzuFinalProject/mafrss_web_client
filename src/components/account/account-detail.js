@@ -20,7 +20,7 @@ export default class AccountProfile extends Component {
     super(props);
     this.state = {
       redirect: null,
-      profile: null,
+      profile: {},
     };
     this.uploadInputRef = createRef();
     this.image = null;
@@ -43,6 +43,7 @@ export default class AccountProfile extends Component {
     AuthService.setUserProfile()
       .then(() => {
         if (!AuthService.getCurrentUserProfile()) {
+          this.setState({ profile: AuthService.getCurrentUserProfile() });
           this.setState({ redirect: "/" });
         }
         this.setState({ profile: AuthService.getCurrentUserProfile() });
@@ -57,8 +58,6 @@ export default class AccountProfile extends Component {
       return <Navigate to={this.state.redirect} />;
     }
 
-    const { profile } = this.state;
-
     return (
       <Card>
         <CardContent>
@@ -70,7 +69,7 @@ export default class AccountProfile extends Component {
             }}
           >
             <Avatar
-              // src={profile.avatar}
+              src={`http://35.246.90.79:8000/files/default.png`}
               sx={{
                 height: 64,
                 mb: 2,
@@ -78,7 +77,7 @@ export default class AccountProfile extends Component {
               }}
             />
             <Typography color="textPrimary" gutterBottom variant="h5">
-              {/* {profile.name} */}
+              {/* {this.profile.first_name + " " + this.profile.last_name} */}
             </Typography>
             <Typography color="textSecondary" variant="body2">
               {`Istanbul, Turkey`}
@@ -112,15 +111,11 @@ export default class AccountProfile extends Component {
           </Button>
         </CardActions>
         <Divider />
-        <ImageList sx={{  }} cols={3} rowHeight={164}>
+        <ImageList sx={{}} cols={3} rowHeight={164}>
           {AuthService.getCurrentUserProfile()?.images.map((item) => (
-             <ImageListItem key={item.img}>
-             <img
-               src={`${item}`}
-               alt={"Name"}
-               loading="lazy"
-             />
-           </ImageListItem>
+            <ImageListItem key={item.img}>
+              <img src={`${item}`} alt={"Name"} loading="lazy" />
+            </ImageListItem>
           ))}
         </ImageList>
       </Card>

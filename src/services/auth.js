@@ -1,8 +1,8 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const BASE_URI = "http://127.0.0.1:8000";
-const API_URL = "http://127.0.0.1:8000/api/auth/";
+const BASE_URI = "http://35.246.90.79:8000";
+const API_URL = "http://35.246.90.79:8000/api/auth/";
 
 class AuthService {
   async login(username, password) {
